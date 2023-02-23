@@ -1,7 +1,9 @@
 # 
 Application created for testing, I used the primefaces framework to create the front-end and spring boot on the back-end.
 
- 
+The application has user authentication and permission, I used spring security
+ ![teste autenticater user](https://user-images.githubusercontent.com/75453738/220821609-1fe58128-1b67-47c6-b0a9-fdeeaf024327.png)
+
 Contains a datatable component with postgresql database information.
 ![teste datatable](https://user-images.githubusercontent.com/75453738/220816837-b700bd9b-9f12-4579-be63-f2763d1c6208.png)
 
@@ -10,6 +12,10 @@ Contains a filter that performs a search by name or parts that contain the name,
 
 Contains a button to add a new user to the table that opens a modal to register.
 ![teste salvar usuario](https://user-images.githubusercontent.com/75453738/220818086-e5cb54ce-ae4d-44b5-829c-70739c4c41c8.png)
+
+The system has field validations
+![teste validate fields](https://user-images.githubusercontent.com/75453738/220821249-47c1e03a-2ea5-4460-8739-1d4d22f1a0da.png)
+
 
 Updating the table with the new record
 ![teste salvar](https://user-images.githubusercontent.com/75453738/220818353-7f2bbbd5-a4a8-483c-81dc-64e5c4cfad82.png)
