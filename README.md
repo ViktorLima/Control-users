@@ -29,6 +29,8 @@ Where the edit button opens a modal to edit the record.
 Thus editing registry.
 ![teste edit](https://user-images.githubusercontent.com/75453738/220819702-8bee0bc1-875e-4eb0-b9f1-ef20cbe882e6.png)
 
+![teste updatade user](https://user-images.githubusercontent.com/75453738/220932572-a91bd830-4627-4d14-a797-5c0f86b6bd09.png)
+
 Updating the table
 ![teste editupdate](https://user-images.githubusercontent.com/75453738/220819895-a2784dbc-6700-473e-84e8-14a4ee4d9ee5.png)
 
