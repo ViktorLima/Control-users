@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h1>Usuarios</h1>
+    <br/>
+</h:head>
+<br/>
+<f:view>
+    <h:body>
+        <br/>
+        <div>
+            <h:form id="formUsers" prependId="false">
+                <p:dataTable id="userDataTable" widgetVar="userTable" var="item" value="#{usersMB.listarTodos()}"
+                             rows="15"
+                             stripedRows="true" paginator="true" paginatorPosition="bottom"
+                             liveResize="true" draggableColumns="true" resizableColumns="true"
+                             globalFilterFunction="#{usersMB.globalFilterFunction}">
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <p:commandButton action="index" value="Novo Usuario" actionListener="#{usersMB.newBdUsers}"
+                                             oncomplete="PF('NewUsers').show()"/>
+                            <h:outputText value=""/>
+                            <p:inputText id="globalFilter" onkeyup="PF('userTable').filter()" style="width:150px"
+                                         placeholder="Buscar usuario"/>
+                        </p:outputPanel>
+                    </f:facet>
+                    <p:column headerText="Nome" style="width: 25%;" sortBy="#{item.id}">
+                        <h:outputText id="outputNome"
+                                      value="#{item.name}"/>
+                    </p:column>
+                    <p:column headerText="Endereço">
+                        <h:outputText value="#{item.address}"/>
+                    </p:column>
+                    <p:column headerText="Numero">
+                        <h:outputText value="#{item.number}"/>
+                    </p:column>
+                    <p:column headerText="Data de nascimento">
+                        <h:outputText id="dataNasc" value="#{item.birth}">
+                            <f:convertDateTime for="dataNasc" pattern="dd/MM/yyyy"
+                                               timeZone="America/Sao_Paulo"></f:convertDateTime>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <p:commandButton
+                                icon="ui-icon-trash"
+                                title="Delete"
+                                update=":userGrid" process="@this"
+                                immediate="true"
+                                actionListener="#{usersMB.remove(item.id)}"
+                                ajax="false"/>
+                        <p:commandButton
+                                icon="ui-icon-edit"
+                                title="Editar"
+                                action="index"
+                                update=":userDialog" process="@this"
+                                oncomplete="PF('NewUsers').show()">
+                            <f:setPropertyActionListener value="#{item}" target="#{usersMB.usersModel}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+                <p:dialog id="userDialog" header="Novo Usuario" widgetVar="NewUsers"
+                          modal="true" resizable="false" closeOnEscape="true">
+                    <h:panelGrid id="userGrid" columns="2" rendered="#{usersMB.usersModel ne null}">
+                        <p:outputLabel value="Nome: " for="Name"/>
+                        <p:inputText requiredMessage="O campo nome não pode ficar vazio" required="true" id="Name"
+                                     size="18" maxlength="18" value="#{usersMB.usersModel.name}"/>
+                        <p:outputLabel value="Endereço: " for="Address"/>
+                        <p:inputText requiredMessage="O campo endereço não pode ficar vazio" required="true"
+                                     id="Address" size="18" maxlength="120"
+                                     value="#{usersMB.usersModel.address}"/>
+                        <p:outputLabel value="Numero: " for="Number"/>
+                        <p:inputText requiredMessage="O campo numero não pode ficar vazio" required="true" id="Number"
+                                     size="18" maxlength="3" value="#{usersMB.usersModel.number}"/>
+                        <p:outputLabel value="Data de Nascimento:" for="Birth"/>
+                        <p:calendar requiredMessage="O campo data de nascimento não pode ficar vazio" required="true"
+                                    id="Birth" pattern="dd/MM/yyyy" size="18" value="#{usersMB.usersModel.birth}"/>
+                        <h:outputLabel/>
+                        <br/>
+                        <h:outputLabel value=""/>
+                        <p:messages closable="true"/>
+                        <h:outputLabel/>
+                        <p:commandButton id="userSave" value="Salvar" actionListener="#{usersMB.newUsers}"
+                                         validateClient="true" action="index" update="userDataTable userGrid  "
+                                         oncomplete=" if(!args.validationFailed) PF('NewUsers').hide()"/>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+        </div>
+    </h:body>
+</f:view>
+</html>
