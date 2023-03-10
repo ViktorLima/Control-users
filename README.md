@@ -34,4 +34,3 @@ Thus editing registry.
 Updating the table
 ![teste editupdate](https://user-images.githubusercontent.com/75453738/220819895-a2784dbc-6700-473e-84e8-14a4ee4d9ee5.png)
 
-# Ficará faltando apenas um desafio proposto  a ser cumprido que seria o de upload de arquivo tive problemas com o componente do primeface e não pude realiza lo a tempo , agradeço a compreensão.
